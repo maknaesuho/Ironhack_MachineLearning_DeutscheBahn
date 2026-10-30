@@ -35,4 +35,40 @@ Evaluated on the 20% stratified test set (4,288 samples):
 * **KNN ($k=5$)**: 73.69% Accuracy, 78.36% Precision, 84.07% Recall.
 * **XGBoost (untuned)**: 73.51% Accuracy, 74.79% Precision, 91.36% Recall.
 * **Gradient Boosting**: 72.04% Accuracy, 73.03% Precision, **92.57% Recall**.
-* **AdaBoost**: 71.29% Accuracy, 73.01
+* **AdaBoost**: 71.29% Accuracy, 73.01% Precision, 90.87% Recall.
+
+---
+
+## 🏆 Hyperparameter Tuning & Champion Model (Random Forest)
+Both Random Forest and XGBoost underwent rigorous 5-fold cross-validation (`GridSearchCV`). **Random Forest** emerged as the final champion model, demonstrating the highest test accuracy and an optimal balance between precision and recall.
+
+* **Best Parameters**: `max_depth: 20`, `max_features: 'sqrt'`, `min_samples_leaf: 1`, `min_samples_split: 5`, `n_estimators: 100`.
+* **CV Training Accuracy**: 75.63%.
+* **Test Set Accuracy**: **77.05%**.
+* **Test Set Precision**: 78.63%.
+* **Test Set Recall**: 90.42%.
+* **ROC-AUC Score**: **0.8173**.
+
+*(Note: Tuned XGBoost performed closely as a runner-up with a 76.17% Test Accuracy and 0.8106 ROC-AUC).*
+
+---
+
+## 🔍 Error & Diagnostic Analysis
+1. **Confusion Matrix Analysis (Tuned Random Forest)**:
+   * **True Positives (Delayed caught)**: **2,517**.
+   * **True Negatives (On-Time caught)**: **749**.
+   * **False Positives (False alarms)**: **658**.
+   * **False Negatives (Missed delays)**: **364**.
+2. **Feature Importance Insights**:
+   * **Random Forest**: Emphasizes platform track bottlenecks, scheduled departure minute, and high-frequency long-distance connections as the top operational drivers for delay.
+3. **Probability Distribution & ROC-AUC**:
+   * **ROC-AUC Score**: **0.8173**.
+
+---
+
+## 🚀 Future Work & Model Expansion
+To further improve predictive performance and contextual understanding, future development steps will focus on integrating:
+* **Geospatial Metrics**: Examining physical route distance and transit distances between hubs.
+* **Weather Conditions**: Merging historical weather data (precipitation, temperature) along the transit routes.
+* **Delay Classifications**: Analyzing specific documented delay reasons (e.g., technical faults vs. track congestion).
+* **Macro Seasonality**: Evaluating broader seasonal events, national holidays, and major track construction periods.
