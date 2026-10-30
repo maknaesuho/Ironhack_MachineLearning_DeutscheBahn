@@ -11,7 +11,7 @@
 ## ⚙️ Tech Stack & Project Structure
 * **Language**: Python 3.x
 * **Libraries**: Pandas, NumPy, Scikit-Learn (Modeling & Preprocessing), XGBoost, Matplotlib & Seaborn (Visualizations).
-* **Main Notebook**: `DB_ML_analysis_manual_encoding_2.ipynb`
+* **Main Notebook**: `DB_ML_analysis_project.ipynb`
 
 ---
 
